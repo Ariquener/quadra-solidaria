@@ -1,0 +1,361 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html, body{
+    width:100%;
+    overflow-x:hidden;
+}
+
+body{
+    font-family:'Poppins', sans-serif;
+    background:#0f172a !important;
+    color:white !important;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    position:relative;
+
+    background:
+    linear-gradient(
+        rgba(15,23,42,0.82),
+        rgba(15,23,42,0.92)
+    ),
+    url('antonio-joao01.jpg');
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    padding-top:120px;
+    padding-bottom:80px;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.glass-nav{
+    background:rgba(15,23,42,0.92) !important;
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.navbar-brand{
+    font-size:1.1rem;
+    color:white !important;
+}
+
+.navbar-brand i{
+    font-size:22px;
+}
+
+.nav-link{
+    color:white !important;
+    transition:0.3s;
+    font-weight:500;
+}
+
+.nav-link:hover{
+    color:#22c55e !important;
+}
+
+.navbar-toggler{
+    border:none;
+}
+
+.navbar-toggler:focus{
+    box-shadow:none;
+}
+
+/* menu mobile bootstrap */
+
+.navbar-collapse{
+    margin-top:15px;
+}
+
+@media(max-width:992px){
+
+    .navbar-collapse{
+        background:#111827;
+        padding:20px;
+        border-radius:20px;
+    }
+
+    .navbar-nav{
+        text-align:center;
+        gap:12px;
+    }
+}
+
+/* =========================
+   HERO CONTENT
+========================= */
+
+.tag{
+    display:inline-block;
+    background:#22c55e;
+    color:white;
+    padding:12px 22px;
+    border-radius:999px;
+    font-size:14px;
+    font-weight:600;
+}
+
+.hero-title{
+    font-size:72px;
+    font-weight:700;
+    line-height:1.1;
+    margin-top:25px;
+    color:white;
+}
+
+.hero-text{
+    font-size:22px;
+    color:#cbd5e1 !important;
+    margin-top:20px;
+    max-width:700px;
+    line-height:1.8;
+}
+
+/* =========================
+   BOTÕES
+========================= */
+
+.btn-success{
+    background:#22c55e !important;
+    border:none !important;
+    border-radius:16px !important;
+}
+
+.btn-light{
+    border-radius:16px !important;
+}
+
+/* =========================
+   ESTATÍSTICAS
+========================= */
+
+.stats-section{
+    margin-top:-70px;
+    position:relative;
+    z-index:10;
+}
+
+.stat-card{
+    background:#111827 !important;
+    padding:35px;
+    border-radius:24px;
+    transition:0.3s;
+    border:1px solid rgba(255,255,255,0.08);
+    box-shadow:0 10px 30px rgba(0,0,0,0.25);
+}
+
+.stat-card:hover{
+    transform:translateY(-8px);
+}
+
+.stat-card h2{
+    color:#22c55e !important;
+    font-size:48px;
+    font-weight:700;
+}
+
+.stat-card p{
+    color:#cbd5e1 !important;
+    margin-top:10px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.custom-card{
+    background:#111827 !important;
+    border-radius:24px;
+    padding:40px 30px;
+    height:100%;
+    transition:0.3s;
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.custom-card:hover{
+    transform:translateY(-8px);
+}
+
+.custom-card i{
+    font-size:50px;
+    color:#22c55e;
+    margin-bottom:20px;
+}
+
+.custom-card h3{
+    margin-bottom:15px;
+    font-size:28px;
+    color:white;
+}
+
+.custom-card p{
+    color:#cbd5e1;
+    line-height:1.7;
+}
+
+/* =========================
+   TABELA
+========================= */
+
+.table{
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.table-dark{
+    background:#111827 !important;
+}
+
+.table-dark thead{
+    background:#22c55e !important;
+}
+
+.table-dark th{
+    background:#22c55e !important;
+    border:none;
+    padding:18px;
+}
+
+.table-dark td{
+    padding:18px;
+    border-color:rgba(255,255,255,0.06);
+}
+
+/* =========================
+   EVENTOS
+========================= */
+
+.evento-card{
+    background:#111827 !important;
+    border-radius:24px;
+    padding:35px;
+    border-left:5px solid #22c55e;
+    height:100%;
+    transition:0.3s;
+}
+
+.evento-card:hover{
+    transform:translateY(-6px);
+}
+
+.evento-card h3{
+    margin-bottom:10px;
+    font-size:26px;
+    color:white;
+}
+
+.evento-card p{
+    color:#cbd5e1;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    background:#020617 !important;
+    color:#94a3b8;
+    margin-top:60px;
+    border-top:1px solid rgba(255,255,255,0.06);
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media(max-width:992px){
+
+    .hero{
+        text-align:center;
+        min-height:auto;
+        padding:140px 20px 80px;
+    }
+
+    .hero-title{
+        font-size:52px;
+    }
+
+    .hero-text{
+        font-size:19px;
+        margin:auto;
+        margin-top:20px;
+    }
+
+    .stats-section{
+        margin-top:30px;
+    }
+}
+
+@media(max-width:768px){
+
+    .hero-title{
+        font-size:42px;
+    }
+
+    .hero-text{
+        font-size:17px;
+    }
+
+    .tag{
+        font-size:13px;
+    }
+
+    .btn{
+        width:100%;
+    }
+}
+
+@media(max-width:576px){
+
+    .navbar-brand{
+        font-size:0.9rem;
+    }
+
+    .navbar-brand i{
+        font-size:18px;
+    }
+
+    .hero{
+        padding-top:120px;
+    }
+
+    .hero-title{
+        font-size:34px;
+        line-height:1.2;
+    }
+
+    .hero-text{
+        font-size:16px;
+        line-height:1.7;
+    }
+
+    .stat-card{
+        padding:28px;
+    }
+
+    .custom-card{
+        padding:30px 20px;
+    }
+
+    .evento-card{
+        padding:25px;
+    }
+}
