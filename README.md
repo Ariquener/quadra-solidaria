@@ -1,173 +1,220 @@
 # ⚽ Quadra Solidária
 
-Sistema web desenvolvido para promover a integração esportiva da comunidade, permitindo divulgação de eventos, campeonatos, quadras esportivas e ações sociais.
+Sistema web desenvolvido para gerenciamento de eventos esportivos, campeonatos, quadras e reservas comunitárias, com autenticação administrativa e integração com banco de dados.
 
-O projeto foi desenvolvido como atividade acadêmica do **Módulo 2 – Desenvolvimento de Aplicação Web**, utilizando HTML, CSS, JavaScript e o framework Bootstrap para construção de uma interface moderna e responsiva.
+O projeto foi desenvolvido como atividade acadêmica integrando **desenvolvimento web com framework**, **modelagem e manipulação de banco de dados** e **controle de versão com Git/GitHub**.
 
 ---
 
-## Objetivo do Projeto
+# Objetivo do Projeto
 
-O **Quadra Solidária** foi criado com o objetivo de incentivar a participação comunitária por meio do esporte, oferecendo uma plataforma simples, acessível e organizada para divulgação de campeonatos, eventos esportivos e fortalecimento da interação social.
+O **Quadra Solidária** foi criado com o objetivo de incentivar a participação esportiva da comunidade, oferecendo um sistema simples para gerenciamento de:
 
+* Campeonatos
+* Eventos esportivos
+* Quadras
+* Reservas
+* Área administrativa
 
-## Tecnologias Utilizadas
+Além disso, o projeto demonstra a integração entre **frontend, backend e banco de dados relacional**.
 
-As seguintes tecnologias foram utilizadas no desenvolvimento:
+---
 
-- **HTML5** → estrutura da aplicação
-- **CSS3** → estilização visual
-- **JavaScript** → interações da interface
-- **Bootstrap 5** → framework front-end para responsividade e componentes
-- **Font Awesome** → ícones
-- **Google Fonts (Poppins)** → tipografia
+# Tecnologias Utilizadas
 
+As tecnologias utilizadas no desenvolvimento foram:
 
-## Funcionalidades do Sistema
+* **Java 21**
+* **Spring Boot 3**
+* **HTML5**
+* **CSS3**
+* **JavaScript**
+* **Bootstrap 5**
+* **MySQL**
+* **JPA / Hibernate**
+* **Maven**
+* **Git e GitHub**
 
-O sistema apresenta as seguintes funcionalidades:
+---
 
-- Página inicial responsiva
-- Barra de navegação adaptável (Navbar)
-- Seção principal com destaque do projeto (Hero Section)
-- Exibição de estatísticas da comunidade
-- Cards informativos sobre eventos, campeonatos e quadras
-- Ranking esportivo
-- Área de próximos eventos
-- Interface adaptada para desktop e dispositivos móveis
-- Estrutura preparada para futura implementação de login administrativo
+# Funcionalidades do Sistema
 
+O sistema possui as seguintes funcionalidades:
 
-## Estrutura do Projeto
+* Página inicial responsiva
+* Login administrativo
+* Dashboard administrativo
+* Autenticação simples de usuário
+* Sistema de logout
+* Integração com banco de dados MySQL
+* Cadastro e manipulação de dados
+* Consultas SQL
+* Operações de inserção, atualização e remoção de dados
 
-quadra-solidaria/
-│
-├── index.html
-├── style.css
-├── antonio-joao01.jpg
-├── README.md
-│
-└── assets/
+---
 
-### Descrição dos Arquivos
+# Modelagem do Banco de Dados
 
-### `index.html`
+O sistema foi modelado utilizando banco de dados relacional, contendo as entidades:
 
-Arquivo principal da aplicação.
+* Usuário
+* Campeonato
+* Evento
+* Quadra
+* Reserva
 
-Responsável pela estrutura visual da interface e organização dos elementos apresentados ao usuário.
+Relacionamentos implementados:
 
-Inclui:
+* Usuário → Reserva
+* Quadra → Reserva
+* Campeonato → Evento
 
-- Navbar responsiva
-- Hero section
-- Botões de ação
-- Estatísticas da comunidade
-- Cards informativos
-- Ranking do campeonato
-- Próximos eventos
-- Rodapé institucional
+O banco utiliza:
 
-### `style.css`
+* Primary Key (PK)
+* Foreign Key (FK)
+* AUTO_INCREMENT
+* NOT NULL
+* UNIQUE
 
-Arquivo responsável pela estilização do sistema.
+---
 
-Define:
+# Manipulação de Banco de Dados
 
-- cores;
-- espaçamentos;
-- layout responsivo;
-- tipografia;
-- animações;
-- hover effects;
-- adaptação mobile.
+Durante o desenvolvimento foram executadas operações SQL como:
 
-Também implementa:
+### Inserção (INSERT)
 
-- overlay escuro na imagem principal;
-- glassmorphism na navbar;
-- cards interativos;
-- responsividade com media queries.
+* Cadastro de campeonatos
+* Cadastro de usuários
+* Cadastro de eventos
 
-## Como Executar o Projeto
+### Consulta (SELECT)
 
-### Método 1 — Abrindo diretamente
+* Listagem de registros
+* Filtros de informações
 
-1. Baixe ou clone o projeto:
+### Atualização (UPDATE)
 
-```bash
-git clone SEU_LINK_DO_REPOSITORIO
-```
+* Alteração de dados cadastrados
 
-2. Abra a pasta do projeto.
+### Remoção (DELETE)
 
-3. Execute o arquivo:
+* Exclusão de registros de teste
+
+---
+
+# Estrutura do Projeto
 
 ```txt
-index.html
+quadra-solidaria/
+│
+├── pom.xml
+├── README.md
+├── database.sql
+│
+├── src/
+│   └── main/
+│       ├── java/
+│       │   └── com/
+│       │       └── quadrasolidaria/
+│       │           ├── QuadraSolidariaApplication.java
+│       │           └── SecurityConfig.java
+│       │
+│       └── resources/
+│           ├── application.properties
+│           └── static/
+│               ├── index.html
+│               ├── login.html
+│               ├── dashboard.html
+│               ├── style.css
+│               ├── script.js
+│               └── imagens
 ```
-
-### Método 2 — Recomendado (VS Code + Live Server)
-
-1. Abra o projeto no VS Code.
-
-2. Instale a extensão:
-
-**Live Server**
-
-3. Clique com o botão direito em:
-
-```
-index.html
-```
-
-4. Selecione:
-
-```
-Open with Live Server
-```
-
-O sistema será iniciado automaticamente no navegador.
 
 ---
 
-## Responsividade
+# Como Executar o Projeto
 
-A interface foi desenvolvida com foco em responsividade, utilizando **Bootstrap 5** e **Media Queries**, permitindo adaptação para:
+## 1. Clonar o repositório
 
-- Desktop
-- Tablets
-- Smartphones
+```bash
+git clone https://github.com/Ariquener/quadra-solidaria.git
+```
 
+## 2. Abrir o projeto
 
-## Capturas da Aplicação
+Abra no VS Code ou IDE Java.
 
-Adicionar imagens do sistema nesta seção.
+## 3. Configurar banco MySQL
+
+Criar o banco:
+
+```sql
+CREATE DATABASE quadra_solidaria;
+```
+
+Configurar o arquivo:
+
+```properties
+src/main/resources/application.properties
+```
 
 Exemplo:
 
-### Tela Inicial
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/quadra_solidaria
+spring.datasource.username=root
+spring.datasource.password=SUA_SENHA
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
-> Inserir captura da página principal do sistema.
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+```
 
-### Ranking e Eventos
+## 4. Executar aplicação
 
-> Inserir captura da área de campeonatos e eventos.
+No terminal:
 
-## Melhorias Futuras
+```bash
+mvn spring-boot:run
+```
 
-Algumas melhorias previstas para futuras versões incluem:
+A aplicação estará disponível em:
 
-- Sistema de login administrativo
-- Cadastro de usuários
-- Reserva de quadras
-- Banco de dados
-- Painel administrativo
-- Integração com backend Java (Spring Boot)
+```txt
+http://localhost:8080
+```
 
-## Autor
+---
+
+# Controle de Versão
+
+O projeto foi gerenciado utilizando **Git** e hospedado no **GitHub**, com commits organizados para acompanhar a evolução do sistema.
+
+Exemplos de commits:
+
+* feat: estrutura inicial do sistema
+* feat: implementa login administrativo
+* feat: integra banco de dados mysql
+* fix: corrige fluxo de autenticação
+
+---
+
+# Melhorias Futuras
+
+Melhorias previstas:
+
+* Cadastro completo de usuários
+* Reserva de quadras pela interface
+* Painel administrativo avançado
+* Segurança com autenticação real via Spring Security
+* Persistência completa via JPA Repository
+
+---
+
+# Autor
 
 **Ariquener Marques**
-
 
 © 2026 — Quadra Solidária
