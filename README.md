@@ -164,8 +164,8 @@ Exemplo:
 
 ```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/quadra_solidaria
-spring.datasource.username=root
-spring.datasource.password=SUA_SENHA
+spring.datasource.username=admin
+spring.datasource.password=123456
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
 spring.jpa.hibernate.ddl-auto=update
