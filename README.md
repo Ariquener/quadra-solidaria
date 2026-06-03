@@ -1,163 +1,185 @@
 # ⚽ Quadra Solidária
 
-Sistema web desenvolvido para gerenciamento de eventos esportivos, campeonatos, quadras e reservas comunitárias, com autenticação administrativa e integração com banco de dados.
+Sistema web para gerenciamento comunitário de quadras esportivas, eventos e campeonatos, com foco em inclusão social, organização esportiva e facilidade de reserva de espaços.
 
-O projeto foi desenvolvido como atividade acadêmica integrando **desenvolvimento web com framework**, **modelagem e manipulação de banco de dados** e **controle de versão com Git/GitHub**.
-
----
-
-# Objetivo do Projeto
-
-O **Quadra Solidária** foi criado com o objetivo de incentivar a participação esportiva da comunidade, oferecendo um sistema simples para gerenciamento de:
-
-* Campeonatos
-* Eventos esportivos
-* Quadras
-* Reservas
-* Área administrativa
-
-Além disso, o projeto demonstra a integração entre **frontend, backend e banco de dados relacional**.
+O projeto permite que usuários realizem reservas de quadras, acompanhem campeonatos, visualizem eventos esportivos e fortaleçam a participação comunitária através do esporte.
 
 ---
 
-# Tecnologias Utilizadas
+## 📌 Objetivo do Projeto
 
-As tecnologias utilizadas no desenvolvimento foram:
+O **Quadra Solidária** foi desenvolvido com o propósito de oferecer uma plataforma simples e acessível para:
 
-* **Java 21**
-* **Spring Boot 3**
-* **HTML5**
-* **CSS3**
-* **JavaScript**
-* **Bootstrap 5**
-* **MySQL**
-* **JPA / Hibernate**
-* **Maven**
-* **Git e GitHub**
+* Reservar quadras esportivas
+* Gerenciar campeonatos
+* Divulgar eventos esportivos
+* Promover integração social através do esporte
+* Facilitar a administração dos espaços comunitários
 
 ---
 
-# Funcionalidades do Sistema
+## 🚀 Funcionalidades
 
-O sistema possui as seguintes funcionalidades:
+### 👤 Usuário
 
-* Página inicial responsiva
+* Visualização de eventos esportivos
+* Consulta de campeonatos
+* Reserva de quadras
+* Seleção de horários disponíveis
+* Bloqueio automático de horários já reservados
+* Interface responsiva para desktop e mobile
+
+### 🔐 Administração(Em construção)
+
 * Login administrativo
 * Dashboard administrativo
-* Autenticação simples de usuário
-* Sistema de logout
-* Integração com banco de dados MySQL
-* Cadastro e manipulação de dados
-* Consultas SQL
-* Operações de inserção, atualização e remoção de dados
+* Gerenciamento de informações do sistema
+
+### ⚽ Sistema de Reservas
+
+* Escolha da quadra
+* Escolha da data
+* Seleção apenas de horários disponíveis
+* Validação de horários ocupados
+* Integração com banco de dados
 
 ---
 
-# Modelagem do Banco de Dados
+## 🛠️ Tecnologias Utilizadas
 
-O sistema foi modelado utilizando banco de dados relacional, contendo as entidades:
+### Backend
 
-* Usuário
-* Campeonato
-* Evento
-* Quadra
+* Java 17+
+* Spring Boot
+* Spring Web
+* Spring Data JPA
+* Spring Security
+* Maven
+
+### Frontend
+
+* HTML5
+* CSS3
+* JavaScript
+* Bootstrap 5
+* Flatpickr
+
+### Banco de Dados
+
+* MySQL
+
+---
+
+## 🗄️ Estrutura do Banco de Dados
+
+O sistema utiliza banco de dados relacional em **MySQL**, contendo entidades como:
+
 * Reserva
+* Quadra
+* Evento
+* Campeonato
 
-Relacionamentos implementados:
+Scripts SQL incluídos no projeto:
 
-* Usuário → Reserva
-* Quadra → Reserva
-* Campeonato → Evento
-
-O banco utiliza:
-
-* Primary Key (PK)
-* Foreign Key (FK)
-* AUTO_INCREMENT
-* NOT NULL
-* UNIQUE
-
----
-
-# Manipulação de Banco de Dados
-
-Durante o desenvolvimento foram executadas operações SQL como:
-
-### Inserção (INSERT)
-
-* Cadastro de campeonatos
-* Cadastro de usuários
-* Cadastro de eventos
-
-### Consulta (SELECT)
-
-* Listagem de registros
-* Filtros de informações
-
-### Atualização (UPDATE)
-
-* Alteração de dados cadastrados
-
-### Remoção (DELETE)
-
-* Exclusão de registros de teste
-
----
-
-# Estrutura do Projeto
-
-```txt
-quadra-solidaria/
-│
-├── pom.xml
-├── README.md
-├── database.sql
-│
-├── src/
-│   └── main/
-│       ├── java/
-│       │   └── com/
-│       │       └── quadrasolidaria/
-│       │           ├── QuadraSolidariaApplication.java
-│       │           └── SecurityConfig.java
-│       │
-│       └── resources/
-│           ├── application.properties
-│           └── static/
-│               ├── index.html
-│               ├── login.html
-│               ├── dashboard.html
-│               ├── style.css
-│               ├── script.js
-│               └── imagens
+```sql
+schema.sql
+data.sql
+operacoes.sql
 ```
 
 ---
 
-# Como Executar o Projeto
+## 📁 Estrutura do Projeto
 
-## 1. Clonar o repositório
+```txt
+src
+ ├── main
+ │   ├── java
+ │   │   └── com.quadrasolidaria
+ │   │       ├── config
+ │   │       ├── controller
+ │   │       ├── entity
+ │   │       └── repository
+ │   │
+ │   └── resources
+ │       ├── static
+ │       ├── application.properties
+ │       ├── schema.sql
+ │       ├── data.sql
+ │       └── operacoes.sql
+```
+
+---
+
+## 🔌 Endpoints Principais
+
+### Reservas
+
+```http
+GET /reservas
+```
+
+Lista todas as reservas.
+
+```http
+POST /reservas
+```
+
+Salva uma nova reserva.
+
+Exemplo:
+
+```json
+{
+  "nomeUsuario": "Ariquener",
+  "dataReserva": "2026-06-03",
+  "horario": "18:00",
+  "quadra": {
+    "idQuadra": 1
+  }
+}
+```
+
+```http
+GET /reservas/ocupados
+```
+
+Retorna horários ocupados de uma quadra.
+
+Exemplo:
+
+```http
+/reservas/ocupados?data=2026-06-03&quadraId=1
+```
+
+---
+
+## ▶️ Como Executar o Projeto
+
+### 1. Clonar o repositório
 
 ```bash
 git clone https://github.com/Ariquener/quadra-solidaria.git
 ```
 
-## 2. Abrir o projeto
+### 2. Entrar na pasta
 
-Abra no VS Code ou IDE Java.
-
-## 3. Configurar banco MySQL
-
-Criar o banco:
-
-```sql
-CREATE DATABASE quadra_solidaria;
+```bash
+cd quadra-solidaria
 ```
 
-Configurar o arquivo:
+### 3. Configurar o banco MySQL
+
+Crie um banco chamado:
+
+```sql
+quadra_solidaria
+```
+
+Configure o arquivo:
 
 ```properties
-src/main/resources/application.properties
+application.properties
 ```
 
 Exemplo:
@@ -165,14 +187,12 @@ Exemplo:
 ```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/quadra_solidaria
 spring.datasource.username=root
-spring.datasource.password=SUA_SENHA
-spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-
+spring.datasource.password=suaSenha
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 ```
 
-## 4. Executar aplicação
+### 4. Executar o projeto
 
 No terminal:
 
@@ -180,7 +200,13 @@ No terminal:
 mvn spring-boot:run
 ```
 
-A aplicação estará disponível em:
+Ou execute pela IDE.
+
+---
+
+## 🌐 Acesso ao Sistema
+
+Aplicação local:
 
 ```txt
 http://localhost:8080
@@ -188,33 +214,35 @@ http://localhost:8080
 
 ---
 
-# Controle de Versão
+## 📱 Responsividade
 
-O projeto foi gerenciado utilizando **Git** e hospedado no **GitHub**, com commits organizados para acompanhar a evolução do sistema.
+O sistema foi desenvolvido com interface responsiva utilizando Bootstrap, permitindo utilização em:
 
-Exemplos de commits:
-
-* feat: estrutura inicial do sistema
-* feat: implementa login administrativo
-* feat: integra banco de dados mysql
-* fix: corrige fluxo de autenticação
+* Desktop
+* Tablet
+* Smartphone
 
 ---
 
-# Melhorias Futuras
+## 📚 Aprendizados do Projeto
 
-Melhorias previstas:
+Durante o desenvolvimento foram aplicados conceitos de:
 
-* Cadastro completo de usuários
-* Reserva de quadras pela interface
-* Painel administrativo avançado
-* Segurança com autenticação real via Spring Security
-* Persistência completa via JPA Repository
+* Programação Orientada a Objetos (POO)
+* APIs REST
+* Integração Frontend + Backend
+* Banco de Dados Relacional
+* Spring Boot
+* JPA/Hibernate
+* Versionamento com Git e GitHub
+* Responsividade Web
 
 ---
 
-# Autor
+## 👨‍💻 Autor
 
 **Ariquener Marques**
 
-© 2026 — Quadra Solidária
+GitHub:
+
+https://github.com/Ariquener
