@@ -10,6 +10,10 @@
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
     <!-- Fonte -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -20,9 +24,12 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">    
+
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 
 <body>
 
@@ -128,23 +135,78 @@
                         através do esporte e da solidariedade.
                     </p>
 
-                    <div class="d-flex flex-wrap gap-3 mt-4">
+        <div class="d-flex flex-wrap gap-3 mt-4">
 
-                        <button id="btn-eventos" class="btn btn-success btn-lg px-4">
-                            Ver Eventos
-                        </button>
+            <button
+                class="btn btn-success btn-lg px-4"
+                data-bs-toggle="modal"
+                data-bs-target="#modalReserva">
 
-                        <button class="btn btn-light btn-lg px-4">
-                            Reservar Quadra
-                        </button>
+                Reservar Quadra
 
-                    </div>
+            </button>
 
+            <button
+                class="btn btn-light btn-lg px-4"
+                data-bs-toggle="modal"
+                data-bs-target="#modalReservas">
+
+                Ver Reservas
+
+            </button>
+
+        </div>
+
+<div class="modal fade" id="modalReservas" tabindex="-1" aria-labelledby="modalReservasLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalReservasLabel">
+                    Reservas Realizadas
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Fechar">
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover align-middle">
+
+                        <thead>
+                            <tr>
+                                <th>Responsável</th>
+                                <th>Quadra</th>
+                                <th>Data</th>
+                                <th>Horário</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="listaReservas">
+                            <tr>
+                                <td colspan="4" class="text-center">
+                                    Carregando reservas...
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
                 </div>
 
             </div>
 
         </div>
+    </div>
+</div>
+
+
+
 
     </section>
 
@@ -364,6 +426,7 @@
 
     </section>
 
+            
     <!-- CONTATO -->
     <section id="contato"
         class="container py-5 text-center">
@@ -387,12 +450,375 @@
 
     </footer>
 
-    <!-- JS -->
-    <script src="script.js"></script>
+    <div class="modal fade" id="modalReserva" tabindex="-1" aria-labelledby="modalReservaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalReservaLabel">
+                    <i class="bi bi-calendar-check me-2"></i>
+                    Reservar Quadra
+                </h5>
 
-</body>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Fechar">
+                </button>
+            </div>
 
+            <div class="modal-body">
+
+                <form id="formReserva">
+
+    <div class="mb-3">
+        <label class="form-label">
+            Nome
+        </label>
+
+        <input
+            id="nome"
+            type="text"
+            class="form-control"
+            placeholder="Digite seu nome"
+            required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">
+            Quadra
+        </label>
+
+        <select
+            id="quadra"
+            class="form-select"
+            required>
+
+            <option value="">
+                Selecione
+            </option>
+
+            <option value="1">
+                Ginásio Municipal
+            </option>
+
+            <option value="2">
+                Campo suiço
+            </option>
+
+            <option value="3">
+                Arena Beach
+            </option>
+
+            <option value="4">
+                Arena SOS Beach
+            </option>
+
+        </select>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6 mb-3">
+
+            <label class="form-label">
+                Data
+            </label>
+
+            <input
+                id="dataReserva"
+                type="text"
+                class="form-control"
+                placeholder="Selecione a data"
+                required>
+            </div>
+
+            <div class="col-md-6 mb-3">
+            <label class="form-label">
+                Horário
+            </label>
+
+            <select
+                id="horario"
+                class="form-select"
+                required>
+
+                <option value="">
+                    Selecione um horário
+                </option>
+
+            </select>
+</div>
+
+</form>
+</div>
+
+<div class="modal-footer">
+
+    <button
+        type="button"
+        class="btn btn-outline-light"
+        data-bs-dismiss="modal">
+
+        Cancelar
+
+    </button>
+
+    <button
+        type="submit"
+        form="formReserva"
+        class="btn btn-success">
+
+        Confirmar Reserva
+
+    </button>
+
+</div>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<script>
+    const horariosPadrao = [
+        '08:00',
+        '09:00',
+        '10:00',
+        '11:00',
+        '14:00',
+        '15:00',
+        '16:00',
+        '17:00',
+        '18:00',
+        '19:00',
+        '20:00'
+    ];
+
+    const campoQuadra = document.getElementById('quadra');
+    const campoData = document.getElementById('dataReserva');
+    const campoHorario = document.getElementById('horario');
+    const formReserva = document.getElementById('formReserva');
+    const campoNome = document.getElementById('nome');
+
+    flatpickr("#dataReserva", {
+        dateFormat: "Y-m-d",
+        minDate: "today",
+        locale: {
+            firstDayOfWeek: 1,
+            weekdays: {
+                shorthand: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"],
+                longhand: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"]
+            },
+            months: {
+                shorthand: ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"],
+                longhand: ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"]
+            }
+        },
+        onChange: carregarHorariosDisponiveis
+    });
+
+    campoQuadra.addEventListener('change', carregarHorariosDisponiveis);
+    campoData.addEventListener('change', carregarHorariosDisponiveis);
+
+    async function buscarHorariosOcupados(quadraId, data) {
+        const resposta = await fetch(
+            `http://localhost:8080/reservas/ocupados?data=${data}&quadraId=${quadraId}`
+        );
+
+        if (!resposta.ok) {
+            throw new Error('Erro ao buscar horários ocupados');
+        }
+
+        return await resposta.json();
+    }
+
+    async function carregarHorariosDisponiveis() {
+        const quadra = campoQuadra.value;
+        const data = campoData.value;
+
+        campoHorario.innerHTML = '<option value="">Selecione um horário</option>';
+
+        if (!quadra || !data) {
+            campoHorario.disabled = true;
+
+            const option = document.createElement('option');
+            option.value = '';
+            option.textContent = 'Escolha a quadra e a data primeiro';
+            option.disabled = true;
+            campoHorario.appendChild(option);
+
+            return;
+        }
+
+        campoHorario.disabled = false;
+
+        try {
+            const horariosOcupados = await buscarHorariosOcupados(quadra, data);
+
+            horariosPadrao.forEach(function(horario) {
+                const option = document.createElement('option');
+                option.value = horario;
+
+                if (horariosOcupados.includes(horario)) {
+                    option.textContent = horario + ' - Reservado';
+                    option.disabled = true;
+                } else {
+                    option.textContent = horario;
+                }
+
+                campoHorario.appendChild(option);
+            });
+        } catch (erro) {
+            console.error(erro);
+
+            const option = document.createElement('option');
+            option.value = '';
+            option.textContent = 'Erro ao carregar horários';
+            option.disabled = true;
+            campoHorario.appendChild(option);
+        }
+    }
+//proteger nome
+
+function protegerNome(nome) {
+    if (!nome) {
+        return 'Usuário';
+    }
+
+    return nome
+        .trim()
+        .split(' ')
+        .map(function(parte) {
+            if (parte.length <= 1) {
+                return parte;
+            }
+
+            return parte.charAt(0) + '*'.repeat(parte.length - 1);
+        })
+        .join(' ');
+}
+
+async function carregarReservas() {
+    const listaReservas = document.getElementById('listaReservas');
+
+    if (!listaReservas) {
+        return;
+    }
+
+    try {
+        const resposta = await fetch('http://localhost:8080/reservas');
+
+        if (!resposta.ok) {
+            throw new Error('Erro ao buscar reservas');
+        }
+
+        const reservas = await resposta.json();
+
+        listaReservas.innerHTML = '';
+
+        if (reservas.length === 0) {
+            listaReservas.innerHTML = `
+                <tr>
+                    <td colspan="4" class="text-center">
+                        Nenhuma reserva cadastrada.
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+
+        reservas.forEach(function(reserva) {
+            const horario = reserva.horario
+                ? reserva.horario.substring(0, 5)
+                : '-';
+
+            const quadra = reserva.quadra && reserva.quadra.nome
+                ? reserva.quadra.nome
+                : 'Quadra não informada';
+
+            const linha = document.createElement('tr');
+
+            linha.innerHTML = `
+                <td>${protegerNome(reserva.nomeUsuario)}</td>
+                <td>${quadra}</td>
+                <td>${reserva.dataReserva}</td>
+                <td>${horario}</td>
+            `;
+
+            listaReservas.appendChild(linha);
+        });
+
+    } catch (erro) {
+        console.error(erro);
+
+        listaReservas.innerHTML = `
+            <tr>
+                <td colspan="4" class="text-center">
+                    Erro ao carregar reservas.
+                </td>
+            </tr>
+        `;
+    }
+}
+
+carregarHorariosDisponiveis();
+carregarReservas();
+
+                formReserva.addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                const reserva = {
+                    nomeUsuario: campoNome.value.trim(),
+                    dataReserva: campoData.value,
+                    horario: campoHorario.value,
+                    quadra: {
+                        idQuadra: Number(campoQuadra.value)
+                    }
+                };
+
+                if (!reserva.nomeUsuario || !reserva.dataReserva || !reserva.horario || !reserva.quadra.idQuadra) {
+                    alert('Preencha todos os campos da reserva.');
+                    return;
+                }
+
+                try {
+                    const resposta = await fetch('http://localhost:8080/reservas', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(reserva)
+                    });
+
+                    if (!resposta.ok) {
+                        const mensagem = await resposta.text();
+                        alert(mensagem || 'Não foi possível confirmar a reserva.');
+                        carregarHorariosDisponiveis();
+                        return;
+                    }
+
+                    alert('Reserva confirmada com sucesso!');
+
+                    formReserva.reset();
+                    carregarHorariosDisponiveis();
+                    carregarReservas();
+
+                    const modal = bootstrap.Modal.getInstance(
+                        document.getElementById('modalReserva')
+                    );
+
+                    modal.hide();
+
+                } catch (erro) {
+                    console.error(erro);
+                    alert('Erro ao conectar com o servidor.');
+                }
+            });
+    </script>
+
+    </body>
 </html>
