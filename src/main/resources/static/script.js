@@ -55,7 +55,7 @@ if (formReserva) {
 
         const reserva = {
             nomeUsuario: document.querySelector('#nome').value,
-            dataReserva: data, // já vem no formato correto do flatpickr (yyyy-mm-dd)
+            dataReserva: data,
             horario: document.querySelector('#horario').value,
             quadra: {
                 idQuadra: parseInt(document.querySelector('#quadra').value)
@@ -63,9 +63,11 @@ if (formReserva) {
         };
 
         try {
-            const response = await fetch('http://localhost:8080/reservas', {
+            const response = await fetch('/reservas', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json'
+                },
                 body: JSON.stringify(reserva)
             });
 
@@ -121,7 +123,7 @@ const horariosDisponiveis = [
 
 async function buscarHorariosOcupados(quadraId, data) {
     const resposta = await fetch(
-        `http://localhost:8080/reservas/ocupados?data=${data}&quadraId=${quadraId}`
+        `/reservas/ocupados?data=${data}&quadraId=${quadraId}`
     );
 
     if (!resposta.ok) {
@@ -144,8 +146,8 @@ async function carregarHorarios() {
         option.value = '';
         option.textContent = 'Escolha a quadra e a data primeiro';
         option.disabled = true;
-        campoHorario.appendChild(option);
 
+        campoHorario.appendChild(option);
         return;
     }
 
@@ -154,8 +156,9 @@ async function carregarHorarios() {
     try {
         const horariosOcupados = await buscarHorariosOcupados(quadra, data);
 
-        horariosDisponiveis.forEach(function(horario) {
+        horariosDisponiveis.forEach(function (horario) {
             const option = document.createElement('option');
+
             option.value = horario;
 
             if (horariosOcupados.includes(horario)) {
@@ -175,6 +178,7 @@ async function carregarHorarios() {
         option.value = '';
         option.textContent = 'Erro ao carregar horários';
         option.disabled = true;
+
         campoHorario.appendChild(option);
     }
 }
@@ -195,7 +199,7 @@ function protegerNome(nome) {
     return nome
         .trim()
         .split(' ')
-        .map(function(parte) {
+        .map(function (parte) {
             if (parte.length <= 1) {
                 return parte;
             }
@@ -216,7 +220,7 @@ async function carregarReservas() {
     }
 
     try {
-        const resposta = await fetch('http://localhost:8080/reservas');
+        const resposta = await fetch('/reservas');
 
         if (!resposta.ok) {
             throw new Error('Erro ao buscar reservas');
@@ -237,7 +241,8 @@ async function carregarReservas() {
             return;
         }
 
-        reservas.forEach(function(reserva) {
+        reservas.forEach(function (reserva) {
+
             const horario = reserva.horario
                 ? reserva.horario.substring(0, 5)
                 : '-';
@@ -274,6 +279,9 @@ async function carregarReservas() {
 carregarHorarios();
 carregarReservas();
 
+// =====================
+// MODAL RESERVAS
+// =====================
 const modalReservas = document.getElementById('modalReservas');
 
 if (modalReservas) {

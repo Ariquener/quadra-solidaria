@@ -626,7 +626,7 @@
 
     async function buscarHorariosOcupados(quadraId, data) {
         const resposta = await fetch(
-            `http://localhost:8080/reservas/ocupados?data=${data}&quadraId=${quadraId}`
+            `/reservas/ocupados?data=${data}&quadraId=${quadraId}`
         );
 
         if (!resposta.ok) {
@@ -710,8 +710,7 @@ async function carregarReservas() {
     }
 
     try {
-        const resposta = await fetch('http://localhost:8080/reservas');
-
+        const resposta = await fetch('/reservas');
         if (!resposta.ok) {
             throw new Error('Erro ao buscar reservas');
         }
@@ -786,7 +785,7 @@ carregarReservas();
                 }
 
                 try {
-                    const resposta = await fetch('http://localhost:8080/reservas', {
+                    const resposta = await fetch('/reservas', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
